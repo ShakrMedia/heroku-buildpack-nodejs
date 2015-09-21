@@ -25,6 +25,7 @@ source $BP_DIR/lib/output.sh
 source $BP_DIR/lib/json.sh
 source $BP_DIR/lib/failure.sh
 source $BP_DIR/lib/environment.sh
+source $BP_DIR/lib/build.sh
 source $BP_DIR/lib/binaries.sh
 source $BP_DIR/lib/cache.sh
 source $BP_DIR/lib/dependencies.sh
@@ -119,6 +120,14 @@ build_dependencies() {
 
 header "Building dependencies"
 build_dependencies | indent
+
+build_app() {
+  build_application "$BUILD_DIR"
+}
+
+header "Building application"
+build_app | indent
+
 
 cache_build() {
   local cache_directories=$(get_cache_directories)
